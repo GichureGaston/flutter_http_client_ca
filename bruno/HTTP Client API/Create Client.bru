@@ -1,0 +1,19 @@
+meta {
+  name: Create Client
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://jsonplaceholder.typicode.com/clients
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com"
+  }
+}

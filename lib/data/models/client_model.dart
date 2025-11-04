@@ -1,3 +1,4 @@
+import 'package:http_client/domain/entities/client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'client_model.g.dart';
@@ -13,4 +14,8 @@ class ClientModel {
   factory ClientModel.fromJson(Map<String, dynamic> json) =>
       _$ClientModelFromJson(json);
   Map<String, dynamic> toJson() => _$ClientModelToJson(this);
+
+  Client toEntity() {
+    return Client(id: id, name: name, email: email);
+  }
 }

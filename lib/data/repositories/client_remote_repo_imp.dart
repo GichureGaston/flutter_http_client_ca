@@ -1,29 +1,46 @@
 import 'package:http_client/domain/entities/client.dart';
+import 'package:http_client/domain/repositories/client_repository.dart';
+import 'package:injectable/injectable.dart';
 
-import '../../domain/repositories/client_repository.dart';
+import '../models/client_model.dart';
+import '../remote/client_remote_repository.dart';
 
-class ClientRepoImp extends ClientRepository {
+@LazySingleton(as: ClientRepository)
+class ClientRemoteRepoImp implements ClientRepository {
+  final ClientRemoteRepository remoteDataSource;
+
+  ClientRemoteRepoImp({required this.remoteDataSource});
+
   @override
-  Future<Client> createClient(Client client) {
-    // TODO: implement createClient
-    throw UnimplementedError();
+  Future<Client> getClient(int id) async {
+    final clientModel = await remoteDataSource.getClient(id);
+    return clientModel.toEntity();
+  }
+
+  @override
+  Future<Client> createClient(Client client) async {
+    final clientModel = ClientModel(
+      id: client.id,
+      name: client.name,
+      email: client.email,
+    );
+    final resultModel = await remoteDataSource.createClient(clientModel);
+    return resultModel.toEntity();
+  }
+
+  @override
+  Future<Client> updateClient(Client client) async {
+    final clientModel = ClientModel(
+      id: client.id,
+      name: client.name,
+      email: client.email,
+    );
+    final resultModel = await remoteDataSource.updateClient(clientModel);
+    return resultModel.toEntity();
   }
 
   @override
   Future<void> deleteClient(int id) {
-    // TODO: implement deleteClient
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Client> getClient(int id) {
-    // TODO: implement getClient
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Client> updateClient(Client client) {
-    // TODO: implement updateClient
-    throw UnimplementedError();
+    return remoteDataSource.deleteClient(id);
   }
 }

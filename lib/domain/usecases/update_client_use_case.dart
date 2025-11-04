@@ -1,11 +1,14 @@
+import 'package:http_client/domain/entities/client.dart';
 import 'package:http_client/domain/repositories/client_repository.dart';
+import 'package:injectable/injectable.dart';
 
-import '../entities/client.dart';
-
+@injectable
 class UpdateClientUseCase {
-  final ClientRepository clientRepository;
-  UpdateClientUseCase(this.clientRepository);
+  final ClientRepository repository;
+
+  UpdateClientUseCase(this.repository);
+
   Future<Client> call(Client client) {
-    return clientRepository.createClient(client);
+    return repository.updateClient(client);
   }
 }
