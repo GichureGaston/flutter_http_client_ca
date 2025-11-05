@@ -9,7 +9,7 @@ part of 'client_model.dart';
 ClientModel _$ClientModelFromJson(Map<String, dynamic> json) =>
     $checkedCreate('ClientModel', json, ($checkedConvert) {
       final val = ClientModel(
-        id: $checkedConvert('id', (v) => (v as num).toInt()),
+        id: $checkedConvert('id', (v) => v as String),
         name: $checkedConvert('name', (v) => v as String),
         email: $checkedConvert('email', (v) => v as String),
       );

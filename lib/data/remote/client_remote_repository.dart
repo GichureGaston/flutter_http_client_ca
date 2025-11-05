@@ -5,21 +5,24 @@ import 'package:http_client/data/models/client_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class ClientRemoteRepository {
-  Future<ClientModel> getClient(int id);
+  Future<ClientModel> getClient(String id);
   Future<ClientModel> createClient(ClientModel client);
   Future<ClientModel> updateClient(ClientModel client);
-  Future<void> deleteClient(int id);
+  Future<void> deleteClient(String id);
 }
 
 @LazySingleton(as: ClientRemoteRepository)
 class ClientRemoteDataImpl implements ClientRemoteRepository {
   final http.Client httpClient;
-  final String baseUrl = 'https://jsonplaceholder.typicode.com';
+  final String baseUrl;
 
-  ClientRemoteDataImpl({required this.httpClient});
+  ClientRemoteDataImpl({
+    required this.httpClient,
+    @Named('baseUrl') required this.baseUrl,
+  });
 
   @override
-  Future<ClientModel> getClient(int id) async {
+  Future<ClientModel> getClient(String id) async {
     final response = await httpClient.get(Uri.parse('$baseUrl/users/$id'));
 
     if (response.statusCode == 200) {
@@ -66,7 +69,7 @@ class ClientRemoteDataImpl implements ClientRemoteRepository {
   }
 
   @override
-  Future<void> deleteClient(int id) async {
+  Future<void> deleteClient(String id) async {
     final response = await httpClient.delete(Uri.parse('$baseUrl/users/$id'));
 
     if (response.statusCode != 204 && response.statusCode != 200) {

@@ -9,7 +9,7 @@ sealed class ClientEvent extends Equatable {
 }
 
 class GetClient extends ClientEvent {
-  final int id;
+  final String id;
 
   const GetClient(this.id);
 
@@ -36,7 +36,7 @@ class UpdateClient extends ClientEvent {
 }
 
 class DeleteClient extends ClientEvent {
-  final int id;
+  final String id;
 
   const DeleteClient(this.id);
 

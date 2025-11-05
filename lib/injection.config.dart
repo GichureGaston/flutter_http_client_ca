@@ -37,7 +37,10 @@ _i174.GetIt $initGetIt(
     instanceName: 'baseUrl',
   );
   gh.lazySingleton<_i323.ClientRemoteRepository>(
-    () => _i323.ClientRemoteDataImpl(httpClient: gh<_i519.Client>()),
+    () => _i323.ClientRemoteDataImpl(
+      httpClient: gh<_i519.Client>(),
+      baseUrl: gh<String>(instanceName: 'baseUrl'),
+    ),
   );
   gh.lazySingleton<_i896.ClientRepository>(
     () => _i52.ClientRemoteRepoImp(

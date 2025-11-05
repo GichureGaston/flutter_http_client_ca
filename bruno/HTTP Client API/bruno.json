@@ -1,5 +1,15 @@
 {
   "version": "1",
   "name": "HTTP Client API",
-  "type": "collection"
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ],
+  "size": 0.0007305145263671875,
+  "filesCount": 5,
+  "presets": {
+    "requestType": "http",
+    "requestUrl": ""
+  }
 }

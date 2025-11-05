@@ -7,7 +7,7 @@ class DeleteClientUseCase {
 
   DeleteClientUseCase(this.repository);
 
-  Future<void> call(int id) {
+  Future<void> call(String id) {
     return repository.deleteClient(id);
   }
 }

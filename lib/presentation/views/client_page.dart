@@ -22,7 +22,7 @@ class ClientView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dummyClient = Client(
-      id: 1,
+      id: "1",
       name: 'John Doe Updated',
       email: 'john.doe.updated@example.com',
     );
@@ -72,14 +72,14 @@ class ClientView extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        context.read<ClientBloc>().add(const GetClient(1));
+                        context.read<ClientBloc>().add(const GetClient("1"));
                       },
                       child: const Text('Fetch Client 1'),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         final newClient = Client(
-                          id: 11,
+                          id: "3",
                           name: 'Jane Doe',
                           email: 'jane.doe@example.com',
                         );
@@ -103,7 +103,7 @@ class ClientView extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        context.read<ClientBloc>().add(const DeleteClient(2));
+                        context.read<ClientBloc>().add(const DeleteClient("2"));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,

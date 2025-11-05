@@ -5,7 +5,7 @@ part 'client_model.g.dart';
 
 @JsonSerializable(checked: true)
 class ClientModel {
-  final int id;
+  final String id;
   final String name;
   final String email;
 

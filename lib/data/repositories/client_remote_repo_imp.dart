@@ -12,7 +12,7 @@ class ClientRemoteRepoImp implements ClientRepository {
   ClientRemoteRepoImp({required this.remoteDataSource});
 
   @override
-  Future<Client> getClient(int id) async {
+  Future<Client> getClient(String id) async {
     final clientModel = await remoteDataSource.getClient(id);
     return clientModel.toEntity();
   }
@@ -40,7 +40,7 @@ class ClientRemoteRepoImp implements ClientRepository {
   }
 
   @override
-  Future<void> deleteClient(int id) {
+  Future<void> deleteClient(String id) {
     return remoteDataSource.deleteClient(id);
   }
 }

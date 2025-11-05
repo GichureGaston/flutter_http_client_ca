@@ -1,6 +1,6 @@
 class Client {
   const Client({required this.id, required this.name, required this.email});
-  final int id;
+  final String id;
   final String name;
   final String email;
 }

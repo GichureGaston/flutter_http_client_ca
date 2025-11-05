@@ -8,7 +8,7 @@ class GetClientUseCase {
 
   GetClientUseCase(this.repository);
 
-  Future<Client> call(int id) {
+  Future<Client> call(String id) {
     return repository.getClient(id);
   }
 }
